@@ -1,0 +1,50 @@
+data_dir: data/raw
+artifacts_dir: artifacts
+output_dir: outputs
+random_seed: 42
+validation_size: 0.2
+batch_size: 64
+final_top_k: 50
+fusion:
+  mode: rrf
+  rrf_k: 60
+  retrieval_top_k: 100
+  quotas:
+    word: 25
+    char: 25
+word_tfidf:
+  analyzer: word
+  ngram_range: [1, 2]
+  min_df: 1
+  max_df: 1.0
+  max_features: 300000
+  sublinear_tf: true
+char_tfidf:
+  analyzer: char_wb
+  ngram_range: [3, 5]
+  min_df: 2
+  max_df: 1.0
+  max_features: 400000
+  sublinear_tf: true
+text:
+  title_weight: 2
+  params_weight: 1
+  description_weight: 1
+  include_search_category: false
+metadata:
+  enabled: true
+  category_boost: 0.05
+  location_boost: 0.02
+  delivery_location_boost: 0.0
+scoped_retrieval:
+  enabled: true
+  history_quota: 0
+  microcategory_quota: 2
+  location_quota: 48
+  category_quota: 0
+  category_scope_enabled: false
+  global_quota: 0
+  predicted_microcategories: 3
+  diversify_microcategories: false
+  micro_local_quotas: [12, 9, 7, 4, 3]
+  micro_global_quotas: [5, 4, 3, 2, 1]
