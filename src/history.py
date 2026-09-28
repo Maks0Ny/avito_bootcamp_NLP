@@ -2,37 +2,10 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-
 import pandas as pd
 
 from .text import normalize_text
 from .validation import make_query_signature
-
-
-@dataclass
-class HistoricalIndex:
-    items_by_query_text: dict[str, list[str]]
-    items_by_signature: dict[str, list[str]]
-    categories_by_query_text: dict[str, list[str]]
-    microcats_by_query_text: dict[str, list[str]]
-
-
-def build_historical_index(train: pd.DataFrame) -> HistoricalIndex:
-    work = train.copy()
-    work["_query_text"] = work["search_query"].map(normalize_text)
-    work["_signature"] = make_query_signature(work)
-
-    def values_by(key: str, value: str) -> dict[str, list[str]]:
-        pairs = work[[key, value]].dropna().astype("string").drop_duplicates()
-        return pairs.groupby(key, sort=False)[value].agg(list).to_dict()
-
-    return HistoricalIndex(
-        items_by_query_text=values_by("_query_text", "item_id"),
-        items_by_signature=values_by("_signature", "item_id"),
-        categories_by_query_text=values_by("_query_text", "item_category_id"),
-        microcats_by_query_text=values_by("_query_text", "item_microcat_id"),
-    )
 
 
 def build_benchmark_history_signals(

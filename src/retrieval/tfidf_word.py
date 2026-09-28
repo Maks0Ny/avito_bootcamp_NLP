@@ -2,11 +2,9 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 from collections.abc import Mapping
 from typing import Any, Sequence
 
-import joblib
 import numpy as np
 from scipy import sparse
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -96,21 +94,3 @@ class WordTfidfRetriever:
                         for pos in chosen
                     ])
         return output
-
-    def save(self, directory: str | Path) -> None:
-        if self.item_matrix is None or self.item_ids is None:
-            raise RuntimeError("Retriever is not fitted")
-        directory = Path(directory)
-        directory.mkdir(parents=True, exist_ok=True)
-        joblib.dump(self.vectorizer, directory / "vectorizer.joblib")
-        sparse.save_npz(directory / "items.npz", self.item_matrix)
-        joblib.dump(self.item_ids, directory / "item_ids.joblib")
-
-    @classmethod
-    def load(cls, directory: str | Path, batch_size: int = 64) -> "WordTfidfRetriever":
-        directory = Path(directory)
-        instance = cls(batch_size=batch_size)
-        instance.vectorizer = joblib.load(directory / "vectorizer.joblib")
-        instance.item_matrix = sparse.load_npz(directory / "items.npz").tocsr()
-        instance.item_ids = joblib.load(directory / "item_ids.joblib")
-        return instance
