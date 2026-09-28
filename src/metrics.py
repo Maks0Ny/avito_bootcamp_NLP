@@ -1,4 +1,4 @@
-"""Competition metric implementations."""
+"""Метрики качества."""
 
 from __future__ import annotations
 
@@ -25,11 +25,7 @@ def recall_at_k(
     relevant: Mapping[Hashable, Iterable[str]],
     k: int = 50,
 ) -> float:
-    """Mean per-query recall over the first *k* unique predictions.
-
-    Queries with no relevant labels are rejected: silently excluding them can hide
-    malformed validation data.
-    """
+    """Средний recall по первым уникальным *k* кандидатам каждого запроса."""
     if k <= 0:
         raise ValueError("k must be positive")
     scores: list[float] = []

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Run sparse hybrid retrieval for benchmark queries and save predictions parquet."""
+"""Запуск sparse-поиска для benchmark-запросов."""
 
 from __future__ import annotations
 

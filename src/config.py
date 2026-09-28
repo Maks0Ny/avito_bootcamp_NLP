@@ -1,4 +1,4 @@
-"""Configuration loading with project-relative path resolution."""
+"""Загрузка конфигурации и работа с путями проекта."""
 
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ DEFAULT_CONFIG = PROJECT_ROOT / "configs" / "baseline.yaml"
 
 
 def load_config(path: str | Path = DEFAULT_CONFIG) -> dict[str, Any]:
-    """Load YAML and validate the small set of invariants used everywhere."""
+    """Загрузить YAML и проверить обязательные параметры."""
     config_path = Path(path).expanduser().resolve()
     with config_path.open("r", encoding="utf-8") as stream:
         config = yaml.safe_load(stream) or {}
@@ -31,6 +31,6 @@ def load_config(path: str | Path = DEFAULT_CONFIG) -> dict[str, Any]:
 
 
 def resolve_project_path(value: str | Path) -> Path:
-    """Resolve relative paths against the project root, not the current shell."""
+    """Преобразовать относительный путь от корня проекта."""
     path = Path(value).expanduser()
     return path.resolve() if path.is_absolute() else (PROJECT_ROOT / path).resolve()

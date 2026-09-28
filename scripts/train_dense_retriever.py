@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Fine-tune the text encoder on query and item pairs."""
+"""Дообучение текстового энкодера на парах запрос–объявление."""
 
 from __future__ import annotations
 

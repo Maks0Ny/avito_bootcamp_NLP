@@ -1,7 +1,4 @@
-"""Strict parquet loading and schema checks.
-
-IDs are converted only to pandas' string dtype. They are never parsed as numbers.
-"""
+"""Загрузка parquet-файлов и проверка их схемы."""
 
 from __future__ import annotations
 
@@ -118,7 +115,7 @@ def load_parquet_checked(path: str | Path, name: str, expected: Iterable[str]) -
 
 
 def load_all(data_dir: str | Path) -> DatasetBundle:
-    """Load all official files or fail with one actionable message."""
+    """Загрузить все три файла датасета."""
     if missing_data_files(data_dir):
         raise FileNotFoundError(format_missing_data_message(data_dir))
     paths = required_paths(data_dir)

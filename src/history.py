@@ -1,4 +1,4 @@
-"""General historical signals learned strictly from available training data."""
+"""Признаки из истории обучающих запросов."""
 
 from __future__ import annotations
 
@@ -14,12 +14,7 @@ def build_benchmark_history_signals(
     valid_item_ids: set[str],
     max_microcats: int = 3,
 ) -> tuple[dict[str, list[str]], dict[str, list[str]]]:
-    """Create general train-only history and likely-microcategory signals.
-
-    Items are ordered by observed positive-pair frequency. Only IDs present in
-    the searchable corpus survive, so this can never emit an invalid candidate.
-    No benchmark labels or query-id-specific rules are used.
-    """
+    """Собрать исторические объявления и вероятные микрокатегории запросов."""
     work = train.copy()
     work["_text"] = work["search_query"].map(normalize_text)
     work["_signature"] = make_query_signature(work)

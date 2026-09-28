@@ -1,4 +1,4 @@
-"""End-to-end sparse baseline shared by validation and benchmark inference."""
+"""Общий sparse-пайплайн для валидации и итогового расчёта."""
 
 from __future__ import annotations
 
@@ -57,7 +57,7 @@ def run_sparse_baseline(
     quota_variants: Mapping[str, Mapping[str, int]] | None = None,
     variant_predictions: dict[str, dict[str, list[str]]] | None = None,
 ) -> dict[str, list[str]]:
-    """Retrieve candidates with independent word/char indexes and fuse rankings."""
+    """Получить кандидатов из word- и char-индексов и объединить списки."""
     del cache_dir
     weights, include_category = _text_options(config)
     item_texts = make_item_texts(items, **weights)

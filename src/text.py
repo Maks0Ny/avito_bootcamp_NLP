@@ -1,4 +1,4 @@
-"""Conservative Unicode-safe text construction."""
+"""Подготовка текста для поиска."""
 
 from __future__ import annotations
 
@@ -13,7 +13,7 @@ _SPACE_RE = re.compile(r"\s+", flags=re.UNICODE)
 
 
 def normalize_text(value: Any) -> str:
-    """Fill missing values, normalize Unicode, lowercase, and collapse whitespace."""
+    """Нормализовать регистр, Unicode, пропуски и пробелы."""
     if value is None or pd.isna(value):
         return ""
     text = unicodedata.normalize("NFKC", str(value)).lower()

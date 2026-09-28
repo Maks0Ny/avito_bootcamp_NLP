@@ -1,4 +1,4 @@
-"""Small shared utilities."""
+"""Небольшие общие функции."""
 
 from __future__ import annotations
 

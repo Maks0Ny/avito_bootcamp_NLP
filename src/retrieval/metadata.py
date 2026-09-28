@@ -1,4 +1,4 @@
-"""Soft metadata signals; no category or location is a hard filter."""
+"""Мягкие поправки по категории и локации."""
 
 from __future__ import annotations
 

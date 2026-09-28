@@ -1,4 +1,4 @@
-"""Common retrieval protocol and result type."""
+"""Общие типы для поиска кандидатов."""
 
 from __future__ import annotations
 

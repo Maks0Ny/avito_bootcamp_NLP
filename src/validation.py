@@ -1,4 +1,4 @@
-"""Leakage-resistant grouping and local validation helpers."""
+"""Разбиение данных и функции для локальной проверки."""
 
 from __future__ import annotations
 

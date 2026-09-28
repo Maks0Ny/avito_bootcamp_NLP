@@ -1,4 +1,4 @@
-"""Memory-bounded word TF-IDF retrieval."""
+"""Поиск по словному TF-IDF небольшими батчами."""
 
 from __future__ import annotations
 
@@ -14,11 +14,7 @@ from .base import RetrievalResult
 
 
 class WordTfidfRetriever:
-    """Fit a sparse item index and score queries in small batches.
-
-    Query-by-item similarity is never materialized as one global dense matrix.
-    Each sparse row is top-k selected independently.
-    """
+    """Sparse-индекс объявлений с обработкой запросов небольшими батчами."""
 
     def __init__(self, batch_size: int = 64, **vectorizer_params: Any) -> None:
         params = dict(vectorizer_params)
@@ -49,12 +45,7 @@ class WordTfidfRetriever:
         top_k: int,
         scopes: Mapping[str, Sequence[np.ndarray | None]],
     ) -> dict[str, list[list[RetrievalResult]]]:
-        """Retrieve several filtered rankings from a single similarity pass.
-
-        Each scope supplies sorted item-matrix row indices for every query, or
-        ``None`` for the full corpus. This makes location/microcategory candidate
-        lists cheap: sparse dot products are calculated only once.
-        """
+        """Получить несколько отфильтрованных списков за один расчёт сходства."""
         if self.item_matrix is None or self.item_ids is None:
             raise RuntimeError("Retriever is not fitted")
         top_k = min(int(top_k), len(self.item_ids))

@@ -1,4 +1,4 @@
-"""Coverage-oriented quota union and Reciprocal Rank Fusion."""
+"""Объединение списков кандидатов по квотам и через RRF."""
 
 from __future__ import annotations
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Convert saved predictions into a strictly validated answer.csv."""
+"""Сборка и проверка итогового answer.csv."""
 
 from __future__ import annotations
 

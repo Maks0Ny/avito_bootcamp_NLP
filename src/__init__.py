@@ -1,3 +1,3 @@
-"""Avito service candidate generation toolkit."""
+"""Кандидатогенерация для поиска услуг."""
 
 __version__ = "0.1.0"

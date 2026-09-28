@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Measure the sparse model on a held-out set of search contexts."""
+"""Проверка sparse-модели на отложенной части запросов."""
 
 from __future__ import annotations
 

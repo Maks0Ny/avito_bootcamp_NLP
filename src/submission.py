@@ -1,4 +1,4 @@
-"""Strict answer.csv construction and round-trip validation."""
+"""Сборка и проверка answer.csv."""
 
 from __future__ import annotations
 

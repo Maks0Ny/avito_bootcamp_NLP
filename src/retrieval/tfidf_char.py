@@ -1,4 +1,4 @@
-"""Character n-gram TF-IDF for morphology, typos, and spacing variants."""
+"""Символьный TF-IDF для опечаток и вариантов написания."""
 
 from __future__ import annotations
 

@@ -1,4 +1,4 @@
-"""Sparse candidate retrievers."""
+"""Sparse-поиск кандидатов."""
 
 from .base import RetrievalResult, Retriever
 from .tfidf_char import CharTfidfRetriever

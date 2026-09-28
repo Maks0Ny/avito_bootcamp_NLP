@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Blend the validated sparse submission with the fine-tuned dense retriever."""
+"""Объединение sparse-кандидатов с результатами dense-модели."""
 
 from __future__ import annotations
 
